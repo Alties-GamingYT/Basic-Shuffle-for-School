@@ -49,13 +49,16 @@ chance = favorite_songs_played / plays
 print(f"\33[0mchance of a favorite song playing:\n\33[31m\33[7m{chance}\33[0m (\33[31m\33[7m{favorite_songs_played} out of {plays}\33[0m)")
 # file_number = 0
 try:
-    txt = open(f"output.csv", "w")
+    csv = open(f"output.csv", "a")
 except:
-    txt = open(f"output.csv", "x", "w")
-#try:
-#    py = open("output.py")
-#except:
-#    py = open("output.py", "x")
+    csv = open(f"output.csv", "x", "a")
+try:
+    txt = open(f"output.txt", "a")
+except:
+    txt = open(f"output.txt", "x", "a")
 for i in plays_song_output:
     final_output = final_output + "\n" + i
+csv.write(final_output)
 txt.write(final_output)
+csv.close()
+txt.close()
